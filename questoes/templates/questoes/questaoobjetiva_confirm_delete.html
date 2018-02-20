@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Questões | Delete{% endblock %}
+{% block content %}
+    <h2></h2>
+    <hr>
+    <div>
+        <form action="" method="post">{% csrf_token %}
+            <p>Você tem certeza que quer deletar a questão "{{ object }}"?</p>
+            <input type="submit" value="Confirm"/>
+        </form>
+    </div>
+{% endblock %}

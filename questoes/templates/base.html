@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <title>{% block title %}Banco de Questões{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Banco de Questões</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="{% url 'questoes-list' %}">Home</a></li>
+            <li><a href="{% url 'add-objetiva' %}">Objetivas</a></li>
+            <li><a href="{% url 'add-discursiva' %}">Discursivas</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">LOGIN</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<div id="content" class="container">
+    <div class="md-col-10">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+</body>
+</html>

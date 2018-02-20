@@ -1,0 +1,38 @@
+{% extends "questoes/questao_form_base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Questões | Discursiva{% endblock %}
+{% block header %}<h2>Questão Discursiva</h2>{% endblock %}
+{% block form_content %}
+    <br>
+    {{ respostas.management_form }}
+
+    {% for form in respostas.forms %}
+        {% if forloop.first %}
+            {% for field in form.visible_fields %}
+                <span>{{ field.label|capfirst }}</span>
+            {% endfor %}
+        {% endif %}
+
+        <div class="{% cycle row1 row2 %} formset_row">
+        {% for field in form.visible_fields %}
+            <span>
+            {% if forloop.first %}
+                {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+            {% endif %}
+            {{ field.errors.as_ul }}
+            {{ field }}
+            </span>
+        {% endfor %}
+        </div>
+    {% endfor %}
+    <input class="btn btn-info" type="submit" value="Save"/> <a class="btn btn-info" href="{% url 'questoes-list' %}">Voltar para a lista</a>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+

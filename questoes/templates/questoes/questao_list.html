@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Questões{% endblock %}
+{% block content %}
+    <h2>Questões Cadastradas:</h2>
+    <div>
+        <form id="searchform" action="{% url 'questoes-list' %}" method="get" accept-charset="utf-8">
+            <div class="row">
+                <div class="form-group">
+                    <button class="btn btn-default" type="submit" value="">
+                        <i class="fa fa-search">Limpar Busca</i>
+                    </button>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="searchbox" name="q" type="text" placeholder="Buscar Questão">
+                </div>
+            </div>
+        </form>
+        <ul class="list-group">
+            {% for questao in object_list %}
+                {% if questao.cname == "objetiva" %}
+                    <li class="list-group-item">{{ questao.texto_questao }}
+                        <a class="btn btn-info" href="{% url 'update-objetiva' questao.pk %}">View/Edit</a>
+                        <a class="btn btn-warning" href="{% url 'delete-objetiva' questao.pk %}">Delete</a>
+                    </li>
+                {% else %}
+                    <li class="list-group-item">{{ questao.texto_questao }}
+                        <a class="btn btn-info" href="{% url 'update-discursiva' questao.pk %}">View/Edit</a>
+                        <a class="btn btn-warning" href="{% url 'delete-discursiva' questao.pk %}">Delete</a>
+                    </li>
+                {% endif %}
+            {% empty %}
+                <li>Nenhuma Questão Cadastrada.</li>
+            {% endfor %}
+
+        </ul>
+    </div>
+{% endblock %}
