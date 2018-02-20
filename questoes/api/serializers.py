@@ -42,10 +42,7 @@ class QuestaoObjetivaSerializer(serializers.ModelSerializer):
             if resposta is None:
                 Resposta.objects.create(questao=instance, **data)
             else:
-                print(data_id)
-                filtered = Resposta.objects.filter(id=data_id)
-                print(filtered)
-                filtered.update(**data)
+                Resposta.objects.filter(id=data_id).update(**data)
 
         for resposta_id, resposta in respostas_map.items():
             if resposta_id not in data_map:
@@ -62,7 +59,7 @@ class QuestaoObjetivaSerializer(serializers.ModelSerializer):
 
 
 class RespostaDiscursivaSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(read_only=True)
+    id = serializers.IntegerField(required=False, allow_null=True)
 
     class Meta:
         model = RespostaDiscursiva
@@ -79,6 +76,16 @@ class QuestaoDiscursivaSerializer(serializers.ModelSerializer):
         RespostaDiscursiva.objects.create(questao=questao, **respostadiscursiva)
 
         return questao
+
+    def update(self, instance, validated_data):
+        respostadiscursiva = validated_data.pop('respostadiscursiva')
+        print(respostadiscursiva)
+        RespostaDiscursiva.objects.filter(id=respostadiscursiva.get('id')).\
+            update(texto_resposta=respostadiscursiva.get('texto_resposta'))
+        instance.texto_questao = validated_data.get('texto_questao', instance.texto_questao)
+        instance.save()
+
+        return instance
 
     class Meta:
         model = QuestaoDiscursiva

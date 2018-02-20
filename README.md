@@ -10,7 +10,7 @@ Pequeno projeto para cadastras questões dos tipos Objetiva e Discursiva
 2. No terminal, clone o repositório
 
     ```
-    git push https://github.com/mcmacedo/bancoquestoes.git
+    git clone https://github.com/mcmacedo/bancoquestoes.git
     ```
 
 3. Navegue até a pasta raiz do projeto
