@@ -2,7 +2,7 @@
 
 ## Sobre
 
-Pequeno projeto para cadastras questões dos tipos Objetiva e Discursiva
+Pequeno projeto para cadastrar questões dos tipos Objetiva e Discursiva
 
 ## Iniciando
 
@@ -19,7 +19,7 @@ Pequeno projeto para cadastras questões dos tipos Objetiva e Discursiva
     cd ./bancoquestoes
     ```
    
-4. Crie um ambiente virtual e instala as dependências do projeto
+4. Crie um ambiente virtual e instale as dependências do projeto
 
     ```
     mkvirtualenv venv
@@ -37,18 +37,18 @@ Pequeno projeto para cadastras questões dos tipos Objetiva e Discursiva
 
 A Api responde nas seguintes urls base
 
-- /api/v1/objetivas
-- /api/v1/dicursivas
+- /api/v1/objetivas/ - GET, POST
+- /api/v1/objetivas/pk/ - PUT, DELETE, GET
+- /api/v1/dicursivas/ - GET, POST
+- /api/v1/dicursivas/pk/ - PUT, DELETE, GET
 
-Nos dois casos estão implementados todos os verbos HTTP.
-
-Você pode utliazar o wget para realizar uma chamda à API, por exemplo:
+Você pode utilizar o wget para realizar uma chamda à API, por exemplo:
 
 ```
     sudo apt-get update
     sudo apt-get install wget
     
-    wget http://localhost:8000/api/v1/objetivas
+    wget http://localhost:8000/api/v1/objetivas/
 ```
 
 ## Autenticação

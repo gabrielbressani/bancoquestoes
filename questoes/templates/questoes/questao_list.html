@@ -19,13 +19,13 @@
             {% for questao in object_list %}
                 {% if questao.cname == "objetiva" %}
                     <li class="list-group-item">{{ questao.texto_questao }}
-                        <a class="btn btn-info" href="{% url 'update-objetiva' questao.pk %}">View/Edit</a>
-                        <a class="btn btn-warning" href="{% url 'delete-objetiva' questao.pk %}">Delete</a>
+                        <a class="btn btn-info pull-right" href="{% url 'update-objetiva' questao.pk %}">View/Edit</a>
+                        <a class="btn btn-warning pull-right" href="{% url 'delete-objetiva' questao.pk %}">Delete</a>
                     </li>
                 {% else %}
                     <li class="list-group-item">{{ questao.texto_questao }}
-                        <a class="btn btn-info" href="{% url 'update-discursiva' questao.pk %}">View/Edit</a>
-                        <a class="btn btn-warning" href="{% url 'delete-discursiva' questao.pk %}">Delete</a>
+                        <a class="btn btn-info pull-right" href="{% url 'update-discursiva' questao.pk %}">View/Edit</a>
+                        <a class="btn btn-warning pull-right" href="{% url 'delete-discursiva' questao.pk %}">Delete</a>
                     </li>
                 {% endif %}
             {% empty %}
